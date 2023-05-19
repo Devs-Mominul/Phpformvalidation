@@ -6,6 +6,7 @@ $email=$_POST["email"];
 $password=$_POST["password"];
 $confirmpassword=$_POST["confirmpassword"];
 $flag=false;
+
 if($name){
     if(ctype_alpha($name)){
         echo "Your name is: ".$name;
@@ -60,8 +61,15 @@ else{
 }
 if($password != $confirmpassword){
     $flag=true;
-    $_SESSION["password_error"]="password and confirm password  does not match";
+    $_SESSION["confirm_error"]="password and confirm password  does not match";
 
+}else{
+    if( preg_match('/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{1,5}$/',$password)!=1
+    ){
+        $flag=true;
+        $_SESSION["password_error"]="your password must be a A * &";
+
+    }
 }
 if($flag){
     header("location:login.php");
@@ -71,6 +79,7 @@ if($flag){
 else{
     echo "all good";
 }
+
 
 
 ?>
