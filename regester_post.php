@@ -63,13 +63,13 @@ if($password != $confirmpassword){
     $flag=true;
     $_SESSION["confirm_error"]="password and confirm password  does not match";
 
-}else{
-    if( preg_match('/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{1,5}$/',$password)!=1
-    ){
-        $flag=true;
-        $_SESSION["password_error"]="your password must be a A * &";
+// }else{
+//     if( preg_match('/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{1,5}$/',$password)!=1
+//     ){
+//         $flag=true;
+//         $_SESSION["password_error"]="your password must be a A * &";
 
-    }
+//     }
 }
 if($flag){
     header("location:login.php");
@@ -77,7 +77,11 @@ if($flag){
 }
 
 else{
-    echo "all good";
+    $db_connect=mysqli_connect("localhost","root","","shohan");
+    $select_db="INSERT INTO `sir`(name ,email, password) VALUES ('$name','$email','$password')";
+    $data_insert=mysqli_query($db_connect,$select_db);
+    $_SESSION["acount_status"]="your account is successful";
+    header("location:signin.php");
 }
 
 

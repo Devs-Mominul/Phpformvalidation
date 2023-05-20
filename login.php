@@ -46,7 +46,8 @@
             <div class="logo">
                 <a href="index.html">Neptune</a>
             </div>
-            <p class="auth-description">Please enter your credentials to create an account.<br>Already have an account? <a href="sign-in.html">Sign In</a></p>
+            <p class="auth-description">Please enter your credentials to create an account.<br>
+            Already have an account? <a href="signin.php">Sign In</a></p>
 
            <form action="regester_post.php" method="post">
            <div class="auth-credentials m-b-xxl">
